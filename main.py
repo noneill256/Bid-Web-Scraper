@@ -13,4 +13,8 @@ driver = webdriver.Firefox(executable_path='PATH TO GECKODRIVER.EXE, options=opt
 url_list = pd.read_excel('C:\users\1sled\desktop\state_list', sheet_name='Sheet1', header=0)
 
 for ind in url_list.index:
-		if (url_list['STATE'][ind] == 'California') and ('planet url_list['WEBSITE'][ind] 
+	# if it's a CA state and a planetbid website
+	if (url_list['STATE'][ind] == 'California') and ((url_list['WEBSITE'][ind]).split('/')[2] == 'www.planetbids.com'):
+
+	# the full url to visit			   
+	url = 'pbsystem.planetbids.com/portal/' + (url_list['WEBSITE'][ind])[-5:) + '/bo/bo-search'
