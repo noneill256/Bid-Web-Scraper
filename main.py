@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as pd
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.common.by import By
@@ -12,6 +13,8 @@ driver = webdriver.Firefox(executable_path='PATH TO GECKODRIVER.EXE, options=opt
 # import the list of urls as a dataframe
 url_list = pd.read_excel('C:\users\1sled\desktop\state_list', sheet_name='Sheet1', header=0)
 
+num_bids_list = np.array([])
+# scroll through each url 
 for ind in url_list.index:
 	# if it's a CA state and a planetbid website
 	if (url_list['STATE'][ind] == 'California') and ((url_list['WEBSITE'][ind]).split('/')[2] == 'www.planetbids.com'):
@@ -25,6 +28,7 @@ for ind in url_list.index:
 	element = driver.find_element(By.XPATH, '/html/body/div[5]/div[2]/div[1]')
 	element = element.text
 	# should return 'Found # bids'
-			
+	
+	# the current number of bids
 	num_bids = element[1] # the number of bids
-																
+	num_bids_list = np.append(num_bids_list, num_bids)														
