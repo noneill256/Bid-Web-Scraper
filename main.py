@@ -18,4 +18,13 @@ for ind in url_list.index:
 
 	# the full url to visit			   
 	url = 'pbsystem.planetbids.com/portal/' + (url_list['WEBSITE'][ind])[-5:) + '/bo/bo-search'
- 
+	driver.get(url)
+	assert 'planetbids' in driver.title
+	
+	# finding the value we want
+	element = driver.find_element(By.XPATH, '/html/body/div[5]/div[2]/div[1]')
+	element = element.text
+	# should return 'Found # bids'
+			
+	num_bids = element[1] # the number of bids
+																
