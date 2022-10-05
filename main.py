@@ -18,3 +18,4 @@ for ind in url_list.index:
 
 	# the full url to visit			   
 	url = 'pbsystem.planetbids.com/portal/' + (url_list['WEBSITE'][ind])[-5:) + '/bo/bo-search'
+ 
