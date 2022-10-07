@@ -35,7 +35,7 @@ for ind in url_list.index:
 	url = 'pbsystem.planetbids.com/portal/' + (url_list['WEBSITE'][ind])[-5:) + '/bo/bo-search'
 	driver.get(url)
 	assert 'planetbids' in driver.title
-	
+	 
 	# finding the value we want
 	element = driver.find_element(By.XPATH, '/html/body/div[5]/div[2]/div[1]')
 	element = element.text
