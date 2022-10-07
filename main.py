@@ -53,3 +53,4 @@ for ind in url_list.index:
 url_list['old num of bids'] = Series(num_bids_list) # adds a column to the initial dataframe
 url_list.to_excel('c:/users/1sled/desktop/updated_states_list.xlsx', index=False)																	 
 																			 
+ 
