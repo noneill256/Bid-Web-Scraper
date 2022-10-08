@@ -16,7 +16,7 @@ from openpyxl.utils import get_column_letter
 # setting selenium options
 options = Options()
 options.headless = True # keep selenium from opening browser window
-driver = webdriver.Firefox(executable_path='PATH TO GECKODRIVER.EXE, options=options)
+driver = webdriver.Firefox(executable_path='C:/Users/Noah/AppData/Local/Programs/Python/Python310/geckodriver.exe', options=options)
 
 # import the list of urls as a dataframe
 url_list = pd.read_excel('C:\users\1sled\desktop\state_list', sheet_name='Sheet1', header=0)
