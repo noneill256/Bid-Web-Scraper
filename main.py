@@ -1,9 +1,3 @@
-# find how to get a whole column of data from openpyxl; alternatively, just use a column of it as a dataframe
-# find how to insert a whole array of data into an excel sheet
-
-""" first, just create a new sheet with the new column
-	then, program this to do the subtraction stuff and add a list to the desired column """
-
 import pandas as pd
 import numpy as np
 from selenium import webdriver
