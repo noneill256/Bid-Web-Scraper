@@ -22,16 +22,19 @@ driver = webdriver.Firefox(executable_path='C:/Users/Noah/AppData/Local/Programs
 url_list = pd.read_excel('C:/users/1sled/desktop/state_list', sheet_name='Sheet1', header=0)
 
 # import the workbook we'll be editing
-# wb = load_workbook('C:\users\1sled\desktop\state_list')
-# wb = wb['Sheet1']
+ws = load_workbook('C:\users\1sled\desktop\state_list')
+ws = ws['Sheet1']
+
+
+# the number of bids that was scraped the last time this script was run
+old_num_bids_list = np.array(ws['D'])
 													
-# create empty lists we'll update
+# create empty array to fill up with each website's current number of bids
 num_bids_list = np.array([])
-old_num_bids_list = np.array([])
 													 
-# scroll through each url 
+# scroll through each url
 for ind in url_list.index:
-	# if it's a CA state and a planetbid website
+	# if it's a CA state and a planetbids website
     if (url_list['STATE'][ind] == 'California') and ((url_list['WEBSITE'][ind]).split('/')[2] == 'www.planetbids.com'):
         
         # generate the full url to visit			   
@@ -48,10 +51,15 @@ for ind in url_list.index:
         num_bids = element.split(' ')[1] # the number of bids
         num_bids_list = np.append(num_bids_list, num_bids)
     
+    # if it's not a CA state or planetbids site, ignore it and go to the next row
     else:
         num_bids_list = np.append(num_bids_list, '')
 																															 
-url_list['old num of bids'] = pd.Series(num_bids_list) # adds a column to the initial dataframe
+# subtract the difference between the old and new number of bids to find how many were added
+num_of_new_bids = np.subtract(num_bids_list, old_num_bids_list)
+
+# add it to the spreadsheet
+url_list['number of new bids'] = num_of_new_bids
 url_list.to_excel('c:/users/1sled/desktop/updated_states_list.xlsx', index=False)																	 
 																			 
  
