@@ -20,13 +20,13 @@ ws = load_workbook('C:\users\1sled\desktop\state_list')
 ws = ws['Sheet1']
 
 
-# the number of bids that was scraped the last time this script was run
-old_num_bids_list = np.array(ws['D'])
+# copying the column containing the number of bids that was scraped the last time this script was run
+old_num_bids_list = np.array(ws['D2:D76'])
 													
 # create empty array to fill up with each website's current number of bids
 num_bids_list = np.array([])
 													 
-# scroll through each url
+# loop through each url
 for ind in url_list.index:
 	# if it's a CA state and a planetbids website
     if (url_list['STATE'][ind] == 'California') and ((url_list['WEBSITE'][ind]).split('/')[2] == 'www.planetbids.com'):
